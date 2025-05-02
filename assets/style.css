@@ -8,62 +8,24 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
   height: 100%;
-  background: #000;
+  background: #000; /* Black background */
   color: #fff;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
-/* Animated gradient wave background */
-#bg-gradient {
+/* Background video full screen */
+#bg-video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
 }
 
-.wave-layer {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%),
-              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.1), transparent 60%),
-              radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent 70%);
-  animation: waveAnim 20s linear infinite alternate;
-  filter: blur(80px) brightness(2) contrast(1.5);
-  opacity: 0.6;
-  transform: rotate(30deg);
-}
-
-.wave-layer.layer2 {
-  animation-duration: 35s;
-  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1), transparent 60%),
-              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 60%);
-  filter: blur(120px) brightness(1.8) contrast(1.5);
-  opacity: 0.4;
-}
-
-.wave-layer.layer3 {
-  animation-duration: 50s;
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent 60%);
-  filter: blur(100px) brightness(2.2) contrast(1.6);
-  opacity: 0.3;
-}
-
-@keyframes waveAnim {
-  0% {
-    transform: translate(0, 0) scale(1) rotate(30deg);
-  }
-  100% {
-    transform: translate(-20%, -10%) scale(1.2) rotate(30deg);
-  }
-}
-
-/* Page wrapper */
+/* Page wrapper with flex layout for sticky footer */
 .page-wrapper {
   display: flex;
   flex-direction: column;
