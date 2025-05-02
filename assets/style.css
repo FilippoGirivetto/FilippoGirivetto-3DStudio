@@ -19,7 +19,7 @@ main {
   padding: 2rem;
 }
 
-/* Other styles remain unchanged */
+/* Header */
 header {
   text-align: center;
   padding: 2rem 1rem;
@@ -34,6 +34,7 @@ header h1 {
   color: #00cccc;
 }
 
+/* Navigation */
 nav ul {
   list-style: none;
   padding: 0;
@@ -52,12 +53,14 @@ nav a:hover {
   color: #00cccc;
 }
 
+/* Centered text block */
 .center-text {
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
 }
 
+/* Footer */
 footer {
   background-color: #222;
   color: #fff;
@@ -80,7 +83,18 @@ footer p {
   font-size: 1rem;
 }
 
+/* Email link color */
+.center-text a {
+  color: #00cccc;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
 
+.center-text a:hover {
+  text-decoration: underline;
+}
+
+/* Background video */
 #bg-video {
   position: fixed;
   top: 0;
