@@ -130,6 +130,7 @@ footer p {
   left: 0;
   min-width: 100vw;
   min-height: 100vh;
-  object-fit: cover;
+  background: url('assets/background.png') no-repeat center center fixed;
+  background-size: cover;
   z-index: -1;
 }
