@@ -41,6 +41,7 @@ nav a:hover {
 
 main {
   padding: 2rem;
+   flex: 1;
 }
 
 .center-text {
