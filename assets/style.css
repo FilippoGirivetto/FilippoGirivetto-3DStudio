@@ -3,21 +3,39 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
   scroll-behavior: smooth;
-  display: flex;
-  flex-direction: column;
-  color: white; /* Ensure text is visible over the video */
 }
 
-/* Set video to fill the entire background */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container to force footer to bottom */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  z-index: 1;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Background video */
 #bg-video {
   position: fixed;
   top: 0;
   left: 0;
   min-width: 100vw;
   min-height: 100vh;
-  object-fit: cover; /* Ensures video covers the entire viewport */
-  z-index: -1; /* Keeps video in the background */
+  object-fit: cover;
+  z-index: -1;
 }
 
 /* Header */
@@ -44,6 +62,8 @@ nav ul {
   align-items: center;
   gap: 2rem;
   margin: 0;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 nav a {
@@ -57,6 +77,25 @@ nav a {
   color: white;
   text-decoration: none;
   transition: all 0.4s ease;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+nav a:hover::before {
+  left: 130%;
 }
 
 nav a:hover {
@@ -69,12 +108,22 @@ nav a:hover {
   nav ul {
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+    justify-content: center;
   }
 
   nav a {
+    width: auto;
     font-size: 1.2rem;
     padding: 1rem 1.5rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  nav a {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
   }
 }
 
@@ -108,15 +157,4 @@ footer .footer-content a:hover {
 footer p {
   margin: 0.5rem 0;
   font-size: 1rem;
-}
-
-/* Email link color */
-.center-text a {
-  color: #00cccc;
-  text-decoration: none;
-  transition: text-decoration 0.3s ease;
-}
-
-.center-text a:hover {
-  text-decoration: underline;
 }
