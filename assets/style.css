@@ -62,7 +62,9 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background-color: #222;
+  background-color: rgba(34, 34, 34, 0.6); /* semi-transparent dark grey */
+  backdrop-filter: blur(6px); /* optional satin blur effect */
+  -webkit-backdrop-filter: blur(6px); /* for Safari */
   color: #fff;
   padding: 2rem 0;
   text-align: center;
