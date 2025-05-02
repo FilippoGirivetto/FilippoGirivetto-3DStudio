@@ -1,8 +1,4 @@
-/* Global layout */
-* {
-  box-sizing: border-box;
-}
-
+/* Sticky footer layout fix */
 html, body {
   height: 100%;
   margin: 0;
@@ -10,32 +6,12 @@ html, body {
   background-color: #000;
   color: #fff;
   scroll-behavior: smooth;
-}
-
-/* Background video container */
-.background-video-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.background-video-container video {
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-}
-
-/* Page wrapper to control layout */
-.content-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
+}
+
+body {
+  flex: 1;
 }
 
 main {
@@ -59,30 +35,33 @@ header h1 {
 }
 
 /* Navigation */
+/* Center navigation items */
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  justify-content: center; /* Ensure buttons are centered horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 2rem; /* Adjust gap between buttons */
   margin: 0;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow items to wrap on small screens */
+  width: 100%; /* Ensure the ul takes up full width */
 }
 
 nav a {
   position: relative;
   display: inline-block;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.5rem; /* Adjust padding for better visibility */
   border-radius: 30px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05); /* Satin transparent look */
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   text-decoration: none;
   transition: all 0.4s ease;
-  font-size: 1rem;
-  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1rem; /* Set a base font size */
+  white-space: nowrap; /* Prevent text from breaking onto a new line */
 }
 
 nav a::before {
@@ -107,23 +86,32 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(0, 204, 204, 0.4);
 }
 
-/* Responsive nav */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    justify-content: center;
+    flex-direction: column; /* Stack the buttons vertically on mobile */
+    gap: 1rem; /* Adjust gap for stacked buttons */
+    width: 100%; /* Ensure the container spans the full width */
+    justify-content: center; /* Center the buttons */
   }
 
   nav a {
-    font-size: 1.2rem;
-    padding: 1rem 1.5rem;
-    text-align: center;
+    width: auto; /* Remove width restriction */
+    font-size: 1.2rem; /* Adjust font size for mobile */
+    padding: 1rem 1.5rem; /* Adjust padding for mobile */
+    text-align: center; /* Ensure text is centered inside the button */
   }
 }
 
-/* Centered content */
+@media (max-width: 480px) {
+  nav a {
+    width: auto; /* Further adjust the button width for very small screens */
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Centered text block */
 .center-text {
   text-align: center;
   max-width: 600px;
@@ -132,9 +120,9 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background-color: rgba(34, 34, 34, 0.7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background-color: rgba(34, 34, 34, 0.7); /* Adjust the transparency for better contrast */
+  backdrop-filter: blur(6px); /* Satin blur effect */
+  -webkit-backdrop-filter: blur(6px); /* for Safari */
   color: #fff;
   padding: 2rem 0;
   text-align: center;
@@ -153,4 +141,27 @@ footer .footer-content a:hover {
 footer p {
   margin: 0.5rem 0;
   font-size: 1rem;
+}
+
+/* Email link color */
+.center-text a {
+  color: #00cccc;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.center-text a:hover {
+  text-decoration: underline;
+}
+
+/* Background image */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: url('assets/background.png') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
 }
