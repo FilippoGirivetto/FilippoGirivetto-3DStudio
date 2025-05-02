@@ -44,14 +44,41 @@ nav ul {
 }
 
 nav a {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05); /* Satin transparent look */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+nav a:hover::before {
+  left: 130%;
 }
 
 nav a:hover {
   color: #00cccc;
+  box-shadow: 0 0 10px rgba(0, 204, 204, 0.4);
 }
+
 
 /* Centered text block */
 .center-text {
