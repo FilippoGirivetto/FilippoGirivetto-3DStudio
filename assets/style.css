@@ -91,22 +91,25 @@ nav a:hover {
     flex-direction: column; /* Stack the buttons vertically on mobile */
     gap: 1rem; /* Adjust gap for stacked buttons */
     width: 100%; /* Ensure the container spans the full width */
+    align-items: center; /* Center the items horizontally */
   }
 
   nav a {
-    width: 90%; /* Make buttons fit the screen */
+    width: auto; /* Remove width restriction, let them adjust based on content */
     font-size: 1.2rem; /* Adjust font size for mobile */
     padding: 1rem 1.5rem; /* Adjust padding for mobile */
+    text-align: center; /* Ensure text is centered inside the button */
   }
 }
 
 @media (max-width: 480px) {
   nav a {
-    width: 95%; /* Further adjust the button width for very small screens */
+    width: auto; /* Further adjust the button width for very small screens */
     font-size: 1rem;
     padding: 1rem 1.5rem;
   }
 }
+
 /* Centered text block */
 .center-text {
   text-align: center;
@@ -116,8 +119,8 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background-color: rgba(34, 34, 34, 0.6); /* semi-transparent dark grey */
-  backdrop-filter: blur(6px); /* optional satin blur effect */
+  background-color: rgba(34, 34, 34, 0.7); /* Adjust the transparency for better contrast */
+  backdrop-filter: blur(6px); /* Satin blur effect */
   -webkit-backdrop-filter: blur(6px); /* for Safari */
   color: #fff;
   padding: 2rem 0;
@@ -150,7 +153,7 @@ footer p {
   text-decoration: underline;
 }
 
-/* Background video */
+/* Background image */
 #bg-video {
   position: fixed;
   top: 0;
