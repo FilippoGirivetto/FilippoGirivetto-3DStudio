@@ -40,7 +40,9 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem; /* Adjust gap between buttons */
+  flex-wrap: wrap; /* Allow items to wrap on small screens */
+  margin: 0;
 }
 
 nav a {
@@ -55,6 +57,7 @@ nav a {
   text-decoration: none;
   transition: all 0.4s ease;
   overflow: hidden;
+  font-size: 1rem; /* Adjust font size for responsiveness */
 }
 
 nav a::before {
@@ -77,6 +80,27 @@ nav a:hover::before {
 nav a:hover {
   color: #00cccc;
   box-shadow: 0 0 10px rgba(0, 204, 204, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack the buttons vertically on mobile */
+    gap: 0.8rem;
+  }
+
+  nav a {
+    width: 80%; /* Make buttons narrower to fit the screen */
+    padding: 0.8rem;
+    font-size: 1.2rem; /* Adjust font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  nav a {
+    width: 90%; /* Further adjust the button width for smaller screens */
+    font-size: 1rem;
+  }
 }
 
 
