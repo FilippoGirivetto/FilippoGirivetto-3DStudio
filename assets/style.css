@@ -11,28 +11,24 @@ html, body {
   background: #000;
   color: #fff;
   scroll-behavior: smooth;
-  position: relative;
-  z-index: 0;
 }
 
-/* Animated blurred gradient background */
-body::before {
-  content: '';
+/* Animated blurred wave background */
+#bg-gradient {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(270deg, #000000, #1a1a1a, #333333, #000000);
-  background-size: 600% 600%;
-  animation: waveGradient 25s ease infinite;
+  background: linear-gradient(135deg, #111 0%, #333 25%, #111 50%, #222 75%, #111 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 25s ease-in-out infinite;
+  filter: blur(80px) brightness(1.2) contrast(1.2);
   z-index: -1;
-  filter: blur(60px);
-  opacity: 0.6;
+  pointer-events: none;
 }
 
-/* Background animation keyframes */
-@keyframes waveGradient {
+@keyframes gradientShift {
   0% {
     background-position: 0% 50%;
   }
