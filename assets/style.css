@@ -13,7 +13,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Animated blurred wave background */
+/* 3D Animated background with layers */
 #bg-gradient {
   position: fixed;
   top: 0;
@@ -22,10 +22,12 @@ html, body {
   height: 100vh;
   background: linear-gradient(135deg, #111 0%, #333 25%, #111 50%, #222 75%, #111 100%);
   background-size: 300% 300%;
-  animation: gradientShift 25s ease-in-out infinite;
+  animation: gradientShift 25s ease-in-out infinite, waveMove 15s infinite linear;
   filter: blur(80px) brightness(1.2) contrast(1.2);
   z-index: -1;
   pointer-events: none;
+  opacity: 0.75;
+  transform: translateZ(0);
 }
 
 @keyframes gradientShift {
@@ -37,6 +39,19 @@ html, body {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Create parallax wave effect for depth */
+@keyframes waveMove {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(-10%) translateY(5%) scale(1.05);
+  }
+  100% {
+    transform: translateX(10%) translateY(-5%) scale(1);
   }
 }
 
