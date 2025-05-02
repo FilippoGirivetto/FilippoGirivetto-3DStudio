@@ -40,11 +40,12 @@ nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center; /* Ensure buttons are centered */
+  justify-content: center; /* Ensure buttons are centered horizontally */
   align-items: center; /* Center items vertically */
   gap: 2rem; /* Adjust gap between buttons */
   margin: 0;
   flex-wrap: wrap; /* Allow items to wrap on small screens */
+  width: 100%; /* Ensure the ul takes up full width */
 }
 
 nav a {
@@ -91,11 +92,11 @@ nav a:hover {
     flex-direction: column; /* Stack the buttons vertically on mobile */
     gap: 1rem; /* Adjust gap for stacked buttons */
     width: 100%; /* Ensure the container spans the full width */
-    align-items: center; /* Center the items horizontally */
+    justify-content: center; /* Center the buttons */
   }
 
   nav a {
-    width: auto; /* Remove width restriction, let them adjust based on content */
+    width: auto; /* Remove width restriction */
     font-size: 1.2rem; /* Adjust font size for mobile */
     padding: 1rem 1.5rem; /* Adjust padding for mobile */
     text-align: center; /* Ensure text is centered inside the button */
