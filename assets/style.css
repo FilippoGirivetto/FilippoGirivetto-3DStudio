@@ -8,14 +8,15 @@
 html, body {
   font-family: Arial, sans-serif;
   height: 100%;
-  background: #000;
+  width: 100%;
   color: #fff;
   scroll-behavior: smooth;
-  position: relative;
   overflow-x: hidden;
+  background: transparent;
+  position: relative;
 }
 
-/* Background video full screen */
+/* Background Video */
 #bg-video {
   position: fixed;
   top: 0;
@@ -28,24 +29,20 @@ html, body {
   pointer-events: none;
 }
 
-/* Page wrapper */
+/* Page Wrapper */
 .page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   position: relative;
   z-index: 1;
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header */
 header {
   text-align: center;
   padding: 2rem 1rem;
+  background: transparent;
   animation: fadeInTop 1s ease forwards;
 }
 
@@ -71,8 +68,6 @@ nav ul {
 }
 
 nav a {
-  position: relative;
-  display: inline-block;
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.05);
@@ -81,24 +76,8 @@ nav a {
   color: white;
   text-decoration: none;
   transition: all 0.4s ease;
+  position: relative;
   overflow: hidden;
-}
-
-nav a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
-  z-index: 1;
-}
-
-nav a:hover::before {
-  left: 130%;
 }
 
 nav a:hover {
@@ -121,6 +100,20 @@ nav a.active {
     font-size: 1.2rem;
     padding: 1rem 1.5rem;
   }
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Center Text */
+.center-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeInUp 1.2s ease forwards;
 }
 
 /* Portfolio Grid */
@@ -148,7 +141,7 @@ nav a.active {
 
 /* Footer */
 footer {
-  background-color: rgba(34, 34, 34, 0.7);
+  background-color: rgba(34, 34, 34, 0.6);
   backdrop-filter: blur(6px);
   color: #fff;
   padding: 2rem 0;
@@ -163,14 +156,6 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
-}
-
-/* Centered text */
-.center-text {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-  animation: fadeInUp 1.2s ease forwards;
 }
 
 /* Animations */
@@ -194,10 +179,4 @@ footer a:hover {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.3s;
 }
