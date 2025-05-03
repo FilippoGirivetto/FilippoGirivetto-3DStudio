@@ -193,3 +193,36 @@ footer p {
   margin: 0.5rem 0;
   font-size: 1rem;
 }
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.portfolio-grid img,
+.portfolio-grid video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-grid img:hover,
+.portfolio-grid video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 204, 204, 0.4);
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
