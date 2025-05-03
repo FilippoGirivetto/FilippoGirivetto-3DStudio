@@ -7,62 +7,61 @@
   <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
-  <header>
-    <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Background Video (optional) -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="assets/background.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-  <main>
-    <div class="center-text">
-      <h2>My Work</h2>
-      <p>Showcase of selected 3D visuals, motion design pieces, and pre-visualization projects.</p>
-    </div>
+  <div class="page-wrapper">
+    <header>
+      <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <section class="portfolio">
-      <!-- Portfolio Item 1 -->
-      <div class="portfolio-item">
-        <img src="assets/project1.jpg" alt="Project 1" />
-        <div class="portfolio-info">
-          <h3>3D Visual #1</h3>
-          <p>3D rendering of a modern architectural design, showcasing lighting and texture techniques.</p>
-        </div>
+    <main>
+      <div class="center-text">
+        <h2>My Work</h2>
+        <p>Showcase of selected 3D visuals, motion design pieces, and pre-visualization projects.</p>
       </div>
 
-      <!-- Portfolio Item 2 -->
-      <div class="portfolio-item">
-        <img src="assets/project2.jpg" alt="Project 2" />
-        <div class="portfolio-info">
-          <h3>Motion Graphics #1</h3>
-          <p>Motion design piece, combining 3D elements with dynamic text animation.</p>
+      <section class="portfolio-grid">
+        <div class="portfolio-item">
+          <img src="assets/work1.jpg" alt="3D Render 1">
+          <div class="item-title">3D Render</div>
         </div>
-      </div>
-
-      <!-- Portfolio Item 3 -->
-      <div class="portfolio-item">
-        <img src="assets/project3.jpg" alt="Project 3" />
-        <div class="portfolio-info">
-          <h3>Pre-Visualization #1</h3>
-          <p>Pre-visualization for a large-scale event, focusing on scene composition and camera angles.</p>
+        <div class="portfolio-item">
+          <video src="assets/work2.mp4" autoplay muted loop playsinline></video>
+          <div class="item-title">Motion Design</div>
         </div>
+        <div class="portfolio-item">
+          <img src="assets/work3.jpg" alt="Visualization">
+          <div class="item-title">Pre-Visualization</div>
+        </div>
+        <div class="portfolio-item">
+          <video src="assets/work4.mp4" autoplay muted loop playsinline></video>
+          <div class="item-title">Animation</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
+        <p>Made with passion and creativity.</p>
+        <p>Follow me on 
+          <a href="https://www.instagram.com/_filippogirivetto_/" target="_blank">Instagram</a> | 
+          <a href="https://it.linkedin.com/in/filippo-girivetto" target="_blank">LinkedIn</a>
+        </p>
       </div>
-
-      <!-- More portfolio items can be added similarly -->
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
-      <p>Made with passion and creativity.</p>
-      <p>Follow me on <a href="https://www.instagram.com/_filippogirivetto_/" target="_blank">Instagram</a> | <a href="https://it.linkedin.com/in/filippo-girivetto" target="_blank">LinkedIn</a></p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </body>
 </html>
