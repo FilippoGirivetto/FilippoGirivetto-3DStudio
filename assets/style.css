@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset & base layout */
 * {
   box-sizing: border-box;
 }
@@ -8,11 +8,34 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, #000 50%, #fff 50%, rgba(255, 255, 255, 0) 70%);
+  background: #000;
   color: #fff;
   scroll-behavior: smooth;
-  background-size: 100% 100%;
-  background-attachment: fixed;
+}
+
+/* Background video full screen */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Page wrapper with flex layout for sticky footer */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
 }
 
 /* Header */
@@ -132,7 +155,6 @@ footer p {
   font-size: 1rem;
 }
 
-/* Center text email links */
 .center-text a {
   color: #00cccc;
   text-decoration: none;
@@ -142,9 +164,55 @@ footer p {
   text-decoration: underline;
 }
 
-/* Black-and-white gradient background with smooth transition */
-body {
-  background: linear-gradient(180deg, #000, #fff);
-  background-size: cover;
-  background-attachment: fixed;
+/* ===========================
+   Portfolio Section Styles
+=========================== */
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(0, 204, 204, 0.3);
+}
+
+.portfolio-item img,
+.portfolio-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.item-title {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: #00cccc;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+/* Responsive Tuning */
+@media (max-width: 480px) {
+  .item-title {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
