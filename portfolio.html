@@ -14,10 +14,12 @@
 
   <div class="page-wrapper">
     <header>
-      <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
-      <div class="hamburger">&#9776;</div>
+      <div class="left-group">
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
+      </div>
       <nav>
-        <ul>
+        <ul id="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
@@ -55,11 +57,11 @@
   </div>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('nav ul');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
     hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
+      navLinks.classList.toggle('show');
     });
   </script>
 </body>
