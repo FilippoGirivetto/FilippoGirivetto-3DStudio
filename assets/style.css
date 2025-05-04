@@ -45,7 +45,8 @@ header {
   padding: 2rem 1rem;
 }
 
-header, h1, h2, h3 {
+/* Apply Montserrat to all headers */
+header, h1, h2, h3, nav a, .site-header {
   font-family: 'Montserrat', sans-serif;
 }
 
