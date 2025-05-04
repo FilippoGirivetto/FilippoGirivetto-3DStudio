@@ -77,8 +77,8 @@ nav ul li a:hover {
   font-size: 2rem;
   cursor: pointer;
   color: white;
-  margin: 0 auto;
-  text-align: center;
+  margin-left: 1rem; /* Align hamburger to the left */
+  text-align: left;
   z-index: 100;
 }
 
@@ -148,8 +148,8 @@ footer a:hover {
     gap: 1rem;
     position: absolute;
     top: 4.5rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
+    left: 0; /* Align menu to the left */
+    transform: translateY(-10px);
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     padding: 1rem 2rem;
@@ -165,7 +165,7 @@ footer a:hover {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 
   .hamburger {
