@@ -15,9 +15,9 @@
   <div class="page-wrapper">
     <header>
       <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
+      <div class="hamburger">&#9776;</div>
       <nav>
-        <div class="hamburger" id="hamburger">&#9776;</div>
-        <ul id="nav-links">
+        <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
@@ -55,11 +55,11 @@
   </div>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
 
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+      navMenu.classList.toggle('show');
     });
   </script>
 </body>
