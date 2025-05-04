@@ -1,94 +1,92 @@
-/* Reset and base styles */
-* {
+/* Global Styles */
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
   font-family: 'Orbitron', sans-serif;
   color: white;
+  background-color: black;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
-/* Background Video */
 #bg-video {
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
-  opacity: 0.15;
+  z-index: -1;
 }
 
-/* Wrapper */
 .page-wrapper {
   position: relative;
   z-index: 1;
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header */
 header {
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 header h1 {
-  font-size: 1.6rem;
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
 }
 
-header .highlight {
-  color: #2acfcf;
+.highlight {
+  color: #33f4f0;
 }
 
-/* Navigation */
 nav {
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 nav ul {
-  display: flex;
   list-style: none;
-  gap: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
   text-decoration: none;
   color: white;
-  font-size: 1rem;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #2acfcf;
+  color: #33f4f0;
 }
 
-/* Hamburger */
+/* Hamburger Menu */
 .hamburger {
   display: none;
-  font-size: 1.8rem;
+  font-size: 2rem;
   cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 100;
 }
 
-/* Center Text */
-.center-text {
+/* Main */
+main {
+  flex: 1;
+  padding: 3rem 2rem;
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  animation: fadeIn 1.2s ease-in-out;
 }
 
 .center-text h2 {
@@ -97,43 +95,45 @@ nav ul li a:hover {
 }
 
 .center-text p {
+  max-width: 600px;
+  margin: 0 auto;
   font-size: 1rem;
-  color: #ccc;
 }
 
 /* Portfolio Grid */
 .portfolio-grid {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
+  padding-bottom: 3rem;
 }
 
 .portfolio-grid img,
 .portfolio-grid video {
   width: 100%;
-  height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .portfolio-grid img:hover,
 .portfolio-grid video:hover {
   transform: scale(1.03);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.8);
 }
 
 /* Footer */
 footer {
-  margin-top: 3rem;
   padding: 1rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
 }
 
 footer a {
-  color: #2acfcf;
+  color: #33f4f0;
   text-decoration: none;
 }
 
@@ -141,39 +141,38 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
+/* Mobile Responsive */
 @media screen and (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
   nav ul {
     flex-direction: column;
     gap: 1rem;
     position: absolute;
-    right: 0;
-    top: 3.5rem;
+    top: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    padding: 1rem;
-    display: none;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 99;
   }
 
   nav ul.show {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    flex-direction: column;
   }
 }
