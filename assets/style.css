@@ -1,19 +1,20 @@
 /* Reset & base layout */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Orbitron', sans-serif;
   height: 100%;
   background: #000;
   color: #fff;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* Background video full screen */
+/* Background video */
 #bg-video {
   position: fixed;
   top: 0;
@@ -22,53 +23,47 @@ html, body {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
+  pointer-events: none;
 }
 
-/* Page wrapper with flex layout for sticky footer */
+/* Page wrapper */
 .page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   position: relative;
   z-index: 1;
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header */
 header {
   text-align: center;
   padding: 2rem 1rem;
+  background: transparent;
 }
 
 header h1 {
   font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .highlight {
-  font-family: 'Arial Black', sans-serif;
   color: #00cccc;
+  font-weight: 700;
 }
 
 /* Navigation */
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 nav a {
-  position: relative;
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
+  padding: 0.7rem 1.4rem;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
@@ -76,26 +71,8 @@ nav a {
   color: white;
   text-decoration: none;
   transition: all 0.4s ease;
-  overflow: hidden;
   font-size: 1rem;
   white-space: nowrap;
-}
-
-nav a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
-  z-index: 1;
-}
-
-nav a:hover::before {
-  left: 130%;
 }
 
 nav a:hover {
@@ -103,7 +80,75 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(0, 204, 204, 0.4);
 }
 
-/* Mobile nav */
+/* Main Content */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.center-text {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.portfolio-grid img,
+.portfolio-grid video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-grid img:hover,
+.portfolio-grid video:hover {
+  transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+footer a {
+  color: #00cccc;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  margin: 0.4rem 0;
+}
+
+/* Satin box */
+.satin-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
@@ -111,119 +156,11 @@ nav a:hover {
   }
 
   nav a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 1rem 1.5rem;
   }
-}
 
-@media (max-width: 480px) {
-  nav a {
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
+  .portfolio-grid {
+    gap: 1rem;
   }
-}
-
-/* Centered text */
-.center-text {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Footer */
-footer {
-  background-color: rgba(34, 34, 34, 0.7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: #fff;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-footer .footer-content a {
-  color: #00cccc;
-  text-decoration: none;
-  transition: text-decoration 0.3s ease;
-}
-
-footer .footer-content a:hover {
-  text-decoration: underline;
-}
-
-footer p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.center-text a {
-  color: #00cccc;
-  text-decoration: none;
-}
-
-.center-text a:hover {
-  text-decoration: underline;
-}
-
-/* ===========================
-   Portfolio Section Styles
-=========================== */
-
-.portfolio {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.portfolio-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  background: #111;
-}
-
-.portfolio-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover img {
-  transform: scale(1.05);
-}
-
-.portfolio-info {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.portfolio-item:hover .portfolio-info {
-  opacity: 1;
-}
-
-.portfolio-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #00cccc;
-}
-
-.portfolio-info p {
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #ddd;
 }
