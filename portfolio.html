@@ -9,11 +9,13 @@
 </head>
 <body>
   <!-- Background Video -->
-  <video autoplay muted loop id="bg-video" preload="auto">
-    <source src="assets/background.mp4" type="video/mp4" />
-    <!-- Fallback background color for browsers that can't display video -->
-    Your browser does not support the video tag. You can still view a background color.
-  </video>
+  <video autoplay muted loop id="bg-video" poster="assets/fallback.jpg">
+  <source src="assets/background.mp4" type="video/mp4" />
+  <!-- Add a fallback for browsers that do not support MP4 -->
+ 
+  <!-- Optional: Fallback image if video does not load -->
+  Your browser does not support the video tag.
+</video>
 
   <div class="page-wrapper">
     <header>
