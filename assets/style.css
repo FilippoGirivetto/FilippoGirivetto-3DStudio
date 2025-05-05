@@ -5,7 +5,10 @@ body, html {
   font-family: 'Orbitron', sans-serif;
   color: white;
   background-color: black;
-  overflow: hidden; /* Prevents clipping */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  overflow-y: auto;   /* Ensures vertical scrolling */
+  height: 100%;       /* Make sure body and html can grow in height */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
 }
 
 #bg-video {
@@ -16,12 +19,7 @@ body, html {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.5; /* 50% opacity for the background video */
-}
-
-/* Fallback background for when the video doesn't load */
-body {
-  background: #333; /* Dark gray fallback color */
+  opacity: 0.5;
 }
 
 /* Layout Wrappers */
@@ -31,6 +29,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  height: auto; /* Allow page wrapper to grow with content */
+  overflow: auto; /* Allow scrolling if needed */
 }
 
 /* Header */
