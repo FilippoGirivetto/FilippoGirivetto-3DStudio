@@ -2,36 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | Filippo Girivetto 3D</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/style.css"/>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      const hamburger = document.querySelector(".hamburger");
-      const navLinks = document.querySelector(".nav-links");
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-      });
-    });
-  </script>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- Background Video -->
   <div class="video-container">
     <video autoplay muted loop playsinline>
-      <source src="assets/bg-video.mp4" type="video/mp4" />
+      <source src="assets/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
     </video>
   </div>
 
+  <!-- Page Wrapper -->
   <div class="page-wrapper">
+
     <!-- Header -->
     <header class="header">
       <div class="nav-left">
-        <div class="hamburger">&#9776;</div>
-        <div class="logo"><span class="accent">Filippo</span> Girivetto 3D</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="logo">Filippo Girivetto <span class="accent">3D</span></div>
       </div>
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="portfolio.html">Portfolio</a>
@@ -40,17 +38,33 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" data-aos="fade-up">
       <section class="intro">
         <h1>Inside the 3D</h1>
-        <p>Exploring the intersection of design, animation, and technology.</p>
+        <p>Exploring the intersection of design, animation and technology.</p>
       </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-      &copy; 2025 Filippo Girivetto 3D. All rights reserved.
+      &copy; 2025 Filippo Girivetto. All rights reserved.
     </footer>
+
   </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 1000,
+    });
+  </script>
+
 </body>
 </html>
