@@ -6,9 +6,10 @@ body, html {
   color: white;
   background-color: black;
   overflow-x: hidden; /* Prevents horizontal scrolling */
-  overflow-y: auto;   /* Ensures vertical scrolling */
+  overflow-y: auto;   /* Allows vertical scrolling */
   height: 100%;       /* Make sure body and html can grow in height */
   scroll-behavior: smooth; /* Smooth scrolling behavior */
+  position: relative;  /* Ensure body has a valid stacking context */
 }
 
 #bg-video {
@@ -18,8 +19,8 @@ body, html {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: -1;
-  opacity: 0.5;
+  z-index: -1; /* Ensure the video is behind the content */
+  opacity: 0.5; /* Add transparency to video */
 }
 
 /* Layout Wrappers */
@@ -29,8 +30,8 @@ body, html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: auto; /* Allow page wrapper to grow with content */
-  overflow: auto; /* Allow scrolling if needed */
+  height: auto; /* Allow the page wrapper to grow with content */
+  overflow: auto; /* Ensure scrolling is enabled */
 }
 
 /* Header */
