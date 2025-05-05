@@ -5,22 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio | Filippo Girivetto 3D</title>
   <link rel="stylesheet" href="assets/style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <video id="bg-video" autoplay muted loop>
-    <source src="assets/bg.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
+  <video autoplay muted loop id="bg-video">
+    <source src="assets/background.mp4" type="video/mp4" />
   </video>
 
   <div class="page-wrapper">
     <header>
-      <div class="logo-menu">
-        <div class="hamburger">&#9776;</div>
-        <h1><span>Filippo Girivetto</span> <span class="highlight">3D</span></h1>
+      <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
       </div>
       <nav>
-        <ul>
+        <ul id="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
@@ -35,27 +34,33 @@
         <p>Showcase of selected 3D visuals, motion design pieces, and pre-visualization projects.</p>
       </div>
 
-      <section class="portfolio-grid">
-        <!-- Example portfolio items -->
-        <img src="assets/scene1.jpg" alt="3D Scene 1" />
-        <video src="assets/animation1.mp4" controls></video>
-        <img src="assets/scene2.jpg" alt="3D Scene 2" />
-        <video src="assets/animation2.mp4" controls></video>
-        <!-- Add more as needed -->
-      </section>
+      <div class="portfolio-grid">
+        <img src="assets/work1.jpg" alt="Work 1">
+        <img src="assets/work2.jpg" alt="Work 2">
+        <img src="assets/work3.jpg" alt="Work 3">
+        <video src="assets/work4.mp4" autoplay muted loop playsinline></video>
+        <video src="assets/work5.mp4" autoplay muted loop playsinline></video>
+        <video src="assets/work6.mp4" autoplay muted loop playsinline></video>
+      </div>
     </main>
 
     <footer>
-      &copy; 2025 Filippo Girivetto 3D | <a href="contact.html">Get in Touch</a>
+      <div class="footer-content">
+        <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
+        <p>living in 4D.</p>
+        <p>Follow me on 
+          <a href="https://www.instagram.com/_filippogirivetto_/" target="_blank">Instagram</a> | 
+          <a href="https://it.linkedin.com/in/filippo-girivetto" target="_blank">LinkedIn</a>
+        </p>
+      </div>
     </footer>
   </div>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navUl = document.querySelector('nav ul');
-    hamburger.addEventListener('click', () => {
-      navUl.classList.toggle('show');
-    });
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('show');
+    }
   </script>
 </body>
 </html>
