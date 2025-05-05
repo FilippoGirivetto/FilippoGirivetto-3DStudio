@@ -11,29 +11,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Fixed Fullscreen Video Background -->
+  <!-- Background Video -->
   <div class="video-container">
     <video autoplay muted loop playsinline>
       <source src="assets/background.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
     </video>
   </div>
 
-  <!-- Page Content Wrapper -->
   <div class="page-wrapper">
+    <!-- Header + Hamburger Nav -->
     <header class="header">
-      <div class="nav-container">
-        <div class="hamburger">&#9776;</div>
+      <div class="nav-left">
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
         <div class="logo">Filippo Girivetto <span class="accent">3D</span></div>
       </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </header>
 
+    <!-- Intro -->
     <main class="main-content" data-aos="fade-up">
       <section class="intro">
         <h1>My Work</h1>
         <p>Showcase of selected 3D visuals, motion design pieces, and pre-visualization projects.</p>
       </section>
 
+      <!-- Grid of images/videos -->
       <section class="portfolio-grid">
         <img src="assets/work1.jpg" alt="Work 1" />
         <img src="assets/work2.jpg" alt="Work 2" />
@@ -50,12 +57,21 @@
       </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
     </footer>
   </div>
 
+  <!-- AOS & Nav Script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
