@@ -2,70 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Filippo Girivetto 3D</title>
-  <link rel="stylesheet" href="assets/style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- Background Video Wrapper -->
+  <!-- Fixed Fullscreen Video Background -->
   <div class="video-container">
-    <video autoplay muted loop playsinline poster="assets/fallback.jpg">
+    <video autoplay muted loop playsinline>
       <source src="assets/background.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
 
+  <!-- Page Content Wrapper -->
   <div class="page-wrapper">
-    <header>
-      <div class="header-left">
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-        <h1>Filippo Girivetto <span class="highlight">3D</span></h1>
+    <header class="header">
+      <div class="nav-container">
+        <div class="hamburger">&#9776;</div>
+        <div class="logo">Filippo Girivetto <span class="accent">3D</span></div>
       </div>
-      <nav>
-        <ul id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
     </header>
 
-    <main>
-      <div class="center-text">
-        <h2>My Work</h2>
+    <main class="main-content" data-aos="fade-up">
+      <section class="intro">
+        <h1>My Work</h1>
         <p>Showcase of selected 3D visuals, motion design pieces, and pre-visualization projects.</p>
-      </div>
+      </section>
 
-      <div class="portfolio-grid">
-        <img src="assets/work1.jpg" alt="Work 1">
-        <img src="assets/work2.jpg" alt="Work 2">
-        <img src="assets/work3.jpg" alt="Work 3">
-        <video src="assets/work4.mp4" autoplay muted loop playsinline></video>
-        <video src="assets/work5.mp4" autoplay muted loop playsinline></video>
-        <video src="assets/work6.mp4" autoplay muted loop playsinline></video>
-      </div>
+      <section class="portfolio-grid">
+        <img src="assets/work1.jpg" alt="Work 1" />
+        <img src="assets/work2.jpg" alt="Work 2" />
+        <img src="assets/work3.jpg" alt="Work 3" />
+        <video autoplay loop muted playsinline>
+          <source src="assets/work4.mp4" type="video/mp4" />
+        </video>
+        <video autoplay loop muted playsinline>
+          <source src="assets/work5.mp4" type="video/mp4" />
+        </video>
+        <video autoplay loop muted playsinline>
+          <source src="assets/work6.mp4" type="video/mp4" />
+        </video>
+      </section>
     </main>
 
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
-        <p>living in 4D.</p>
-        <p>Follow me on 
-          <a href="https://www.instagram.com/_filippogirivetto_/" target="_blank">Instagram</a> | 
-          <a href="https://it.linkedin.com/in/filippo-girivetto" target="_blank">LinkedIn</a>
-        </p>
-      </div>
+    <footer class="footer">
+      <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
     </footer>
   </div>
 
-  <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('show');
-    }
-  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
