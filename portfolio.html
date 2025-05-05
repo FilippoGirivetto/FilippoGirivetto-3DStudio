@@ -8,14 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Background Video -->
-  <video autoplay muted loop id="bg-video" poster="assets/fallback.jpg">
-  <source src="assets/background.mp4" type="video/mp4" />
-  <!-- Add a fallback for browsers that do not support MP4 -->
- 
-  <!-- Optional: Fallback image if video does not load -->
-  Your browser does not support the video tag.
-</video>
+
+  <!-- Background Video Wrapper -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline poster="assets/fallback.jpg">
+      <source src="assets/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <div class="page-wrapper">
     <header>
