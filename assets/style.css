@@ -19,6 +19,11 @@ body, html {
   opacity: 0.5; /* 50% opacity for the background video */
 }
 
+/* Fallback background for when the video doesn't load */
+body {
+  background: #333; /* Dark gray fallback color */
+}
+
 /* Layout Wrappers */
 .page-wrapper {
   position: relative;
