@@ -4,363 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Artist Portfolio</title>
-    <style>
-        /* Base Styles */
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #f5f5f5;
-            --accent: #3a86ff;
-            --text: #333;
-            --light-text: #f5f5f5;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--secondary);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(26, 26, 26, 0.9);
-            color: var(--light-text);
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1635070041078-e363dbe0b3d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            color: var(--light-text);
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent);
-            color: var(--light-text);
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 5rem 5%;
-            background-color: var(--secondary);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            height: 300px;
-            background-color: var(--primary);
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-img {
-            opacity: 0.3;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-            color: var(--light-text);
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 5%;
-            background-color: var(--primary);
-            color: var(--light-text);
-        }
-
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-text h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 5%;
-            background-color: var(--secondary);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent);
-            outline: none;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            background-color: #2a6fd1;
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: var(--light-text);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-link {
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            color: var(--accent);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <a href="#" class="logo">3D ARTIST</a>
+        <div class="logo">3D Artist</div>
         <nav>
-            <div class="nav-links">
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Bringing Imagination to Life in 3D</h1>
-            <p>Specializing in high-end 3D modeling, animation, and visual effects for games, films, and digital experiences.</p>
-            <a href="#portfolio" class="btn">View My Work</a>
+            <h1>Creative 3D Art & Design</h1>
+            <p>Bringing imagination to life through stunning 3D visualizations and digital art</p>
+            <a href="#portfolio" class="btn">View Portfolio</a>
         </div>
     </section>
 
@@ -368,45 +31,51 @@
         <h2 class="section-title">Portfolio</h2>
         <div class="gallery">
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 1" class="portfolio-img">
+                <img src="work1.jpg" alt="3D Artwork 1" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Futuristic City</h3>
-                    <p>3D Environment Design</p>
+                    <h3 class="portfolio-title">Project 1</h3>
+                    <p>3D Character Design</p>
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 2" class="portfolio-img">
+                <img src="work2.jpg" alt="3D Artwork 2" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Character Design</h3>
-                    <p>3D Character Modeling</p>
+                    <h3 class="portfolio-title">Project 2</h3>
+                    <p>Architectural Visualization</p>
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 3" class="portfolio-img">
+                <img src="work3.jpg" alt="3D Artwork 3" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Product Visualization</h3>
-                    <p>3D Product Rendering</p>
+                    <h3 class="portfolio-title">Project 3</h3>
+                    <p>Product Rendering</p>
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 4" class="portfolio-img">
+                <video autoplay loop muted class="portfolio-img">
+                    <source src="work4.mp4" type="video/mp4">
+                </video>
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Architectural Render</h3>
-                    <p>3D Architectural Visualization</p>
+                    <h3 class="portfolio-title">Project 4</h3>
+                    <p>Environment Design</p>
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 5" class="portfolio-img">
+                <video autoplay loop muted class="portfolio-img">
+                    <source src="work5.mp4" type="video/mp4">
+                </video>
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Sci-Fi Vehicle</h3>
-                    <p>3D Hard Surface Modeling</p>
+                    <h3 class="portfolio-title">Project 5</h3>
+                    <p>Animation</p>
                 </div>
             </div>
             <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="3D Artwork 6" class="portfolio-img">
+                <video autoplay loop muted class="portfolio-img">
+                    <source src="work6.mp4" type="video/mp4">
+                </video>
                 <div class="portfolio-overlay">
-                    <h3 class="portfolio-title">Fantasy Creature</h3>
-                    <p>3D Character Sculpting</p>
+                    <h3 class="portfolio-title">Project 6</h3>
+                    <p>Concept Art</p>
                 </div>
             </div>
         </div>
@@ -414,14 +83,13 @@
 
     <section id="about" class="about">
         <div class="about-content">
-            <div>
-                <img src="https://images.unsplash.com/photo-1639762681057-1e27d3d0b1d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Artist" class="about-img">
+            <div class="about-img">
+                <img src="work1.jpg" alt="About the Artist">
             </div>
             <div class="about-text">
                 <h2>About Me</h2>
-                <p>I'm a professional 3D artist creating stunning visual content for games, films, and advertising. My passion lies in bringing creative visions to life through detailed 3D modeling, texturing, and rendering.</p>
-                <p>I specialize in character design, environment creation, and product visualization, with expertise in industry-standard software including Blender, Maya, Substance Painter, and Unreal Engine.</p>
-                <p>My work has been featured in international exhibitions and I've collaborated with major studios to create immersive digital experiences.</p>
+                <p>I'm a professional 3D artist with over 5 years of experience creating stunning visual content for games, films, and commercial projects. My passion lies in bringing creative visions to life through 3D modeling, texturing, and rendering.</p>
+                <p>I specialize in character design, environmental modeling, and photorealistic product visualization. My work has been featured in various exhibitions and commercial projects worldwide.</p>
             </div>
         </div>
     </section>
@@ -430,4 +98,30 @@
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-form">
             <form>
-                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">ArtStation</a>
+            <a href="#" class="social-link">LinkedIn</a>
+        </div>
+        <p>&copy; 2023 3D Artist Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
