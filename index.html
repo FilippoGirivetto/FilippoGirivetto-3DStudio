@@ -164,16 +164,13 @@
   </div>
 
   <script>
-    VANTA.BIRDS({
-      el: "#vanta-bg",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00
-    });
+    setVantaEffect(BIRDS(({
+  el:myRef.current,
+  color1: 0xabadcd,
+  color2: 0xded7d2,
+  backgroundColor: 0x0
+  //and so on...
+})))
   </script>
 </body>
 </html>
