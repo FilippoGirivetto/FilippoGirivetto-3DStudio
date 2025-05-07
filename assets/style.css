@@ -1,216 +1,116 @@
-/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
   scroll-behavior: smooth;
-  font-family: 'Helvetica Neue', sans-serif;
-  background: black;
-  color: white;
+  color: #fff;
 }
 
-body, html {
-  height: 100%;
+#vanta-bg {
+  position: relative;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-/* VANTA Background Container */
-#vanta-bg {
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-/* Header */
-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+  z-index: 1000;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
-  font-size: 1.5rem;
   font-weight: bold;
-  letter-spacing: 0.05em;
+  font-size: 1.2rem;
 }
 
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
+.navbar a {
+  margin-left: 1rem;
 }
 
-.nav-link {
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.3s;
+.navbar img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-  background: #00cccc;
-  transition: width 0.3s;
+.navbar img:hover {
+  transform: scale(1.2);
 }
 
-.nav-link:hover {
-  color: #00cccc;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Sections */
-section {
-  padding: 6rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-content,
-.about-text,
-.portfolio-intro,
-.contact-content {
-  max-width: 800px;
+.section {
+  padding: 120px 20px 60px;
+  max-width: 900px;
   margin: auto;
-  text-align: center;
 }
 
-h1, h2, h3 {
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.section-title {
+.section h2 {
   font-size: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
 }
 
-/* Portfolio Grid */
-.portfolio-grid {
+.gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.gallery img, .gallery video {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.socials {
+  margin-top: 1rem;
+}
+
+.socials a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #00ffee;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: #ffffff;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
   margin-top: 2rem;
 }
 
-.portfolio-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.portfolio-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 40px rgba(0, 255, 255, 0.4);
-}
-
-.portfolio-img,
-.portfolio-video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Captions */
-.portfolio-caption {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
-  text-align: left;
-  color: white;
-}
-
-.portfolio-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Contact Section */
-.contact-content p {
-  margin-bottom: 1rem;
-}
-
-/* Footer */
-footer {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-.social-links {
-  margin-bottom: 1rem;
-}
-
-.social-link {
-  margin: 0 0.5rem;
-  color: #00cccc;
-  transition: color 0.3s;
-}
-
-.social-link:hover {
-  color: white;
-}
-
-/* Animations (AOS.js optional) */
-[data-aos] {
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-aos].aos-animate {
-  opacity: 1;
-  transform: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .header {
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.85);
-    position: absolute;
-    right: 2rem;
-    top: 100%;
-    padding: 1rem;
-    display: none;
+    align-items: flex-start;
   }
-
-  header.active .nav-links {
-    display: flex;
+  .navbar {
+    margin-top: 0.5rem;
   }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
+  .navbar a {
+    margin: 0 0.5rem 0.5rem 0;
   }
 }
