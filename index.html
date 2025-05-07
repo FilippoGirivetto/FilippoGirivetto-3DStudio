@@ -6,8 +6,8 @@
   <title>Filippo Girivetto 3D | One Page Portfolio</title>
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="p5.min.js"></script>
-  <script src="vanta.trunk.min.js"></script>
+  <script src="three.r134.min.js"></script>
+  <script src="vanta.birds.min.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -136,19 +136,15 @@
   </div>
 
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      VANTA.TRUNK({
-        el: "#vanta-bg",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        spacing: 10.00,
-        chaos: 5.00
-      });
+    VANTA.BIRDS({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00
     });
   </script>
 </body>
