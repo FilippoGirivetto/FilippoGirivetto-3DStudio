@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filippo Girivero | 3D Portfolio</title>
-  <link rel="stylesheet" href="assets/style.css">
-<script src="p5.min.js"></script>
+  <title>Filippo Girivetto 3D stuff</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="p5.min.js"></script>
 <script src="vanta.trunk.min.js"></script>
 <script>
 VANTA.TRUNK({
-  el: "head",
+  el: "#vanta-bg",
   mouseControls: true,
   touchControls: true,
   gyroControls: false,
@@ -22,32 +22,68 @@ VANTA.TRUNK({
 })
 </script>
 </head>
-<body>
-  <!-- Theme Toggle -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-    <span class="theme-icon">🌓</span>
-  </button>
-
+<body> 
   <!-- Header -->
-  <header class="header">
-    <nav class="navbar">
-      <a href="#" class="logo">FG</a>
+  <header>
+    <div class="logo">Filippo Girivetto 3D</div>
+    <nav>
       <ul class="nav-links">
-        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#introduction" class="nav-link">Introduction</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Introduction Section -->
+    <section id="introduction" class="hero">
       <div class="hero-content">
-        <h1>Filippo Girivero</h1>
-        <p>3D Artist & Designer</p>
+        <h1>Hi, I’m Filippo</h1>
+        <p>
+          I'm a 3D artist blending traditional visual storytelling with cutting-edge technology.
+          I specialize in creating immersive experiences through static renders, motion graphics, and AI-generated imagery and video.
+          Welcome to my world of digital experimentation.
+        </p>
       </div>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+<!-- About Section -->
+<section id="about" class="about-section" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-content">
+      <h2 id="about-heading" class="section-title">About Me</h2>
+      <div class="about-text">
+        <h2>About me</h2>
+        <p>
+          I've always been passionate about sketching, photography, cinema, and especially CGI, constantly developing new workflows that integrate artificial intelligence into the creative process.
+        </p>
+        <p>
+          I’ve worked with a design and architectural studio, producing event pre-visualizations, motion graphics, and video editing for large firms.
+          My work is driven by visual storytelling and a desire to explore the boundaries between digital and physical reality.
+          I've worked with a design and architectural studio, producing event pre-visualization, motion graphics, and video editing for large firms. My work is driven by visual storytelling and a desire to explore the boundary between digital and physical reality.
+        </p>
+      </div>
+    </section>
+    </div>
+  </div>
+</section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+      <h2 class="section-title">Portfolio</h2>
+      <p>
+        This is a curated collection of my recent visual work — including 3D renders, motion pieces, and experimental videos.
+        Each project represents a blend of personal vision, technical precision, and creative exploration.
+      </p>
+      <div class="gallery">
+        <div class="portfolio-item">
+          <img src="/assets/work1.jpg" alt="Work 1" class="portfolio-img">
+          <div class="portfolio-overlay">
 <!-- Portfolio Section -->
 <section id="portfolio" class="portfolio-section" aria-labelledby="portfolio-heading">
   <div class="container">
@@ -63,6 +99,11 @@ VANTA.TRUNK({
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 1</h3>
             <p>Environment render with photogrammetry elements</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/assets/work2.jpg" alt="Work 2" class="portfolio-img">
+          <div class="portfolio-overlay">
           </figcaption>
         </figure>
       </article>
@@ -73,6 +114,11 @@ VANTA.TRUNK({
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 2</h3>
             <p>Pre-visualization concept</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img src="/assets/work3.jpg" alt="Work 3" class="portfolio-img">
+          <div class="portfolio-overlay">
           </figcaption>
         </figure>
       </article>
@@ -82,6 +128,11 @@ VANTA.TRUNK({
           <img src="/assets/work3.jpg" alt="Compositing of real-life elements in 3D scene" class="portfolio-img" loading="lazy">
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 3</h3>
+            <p>Compositing of real-life elements in a 3D scene</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <video autoplay muted loop class="portfolio-video">
             <p>Compositing of real-life elements in 3D scene</p>
           </figcaption>
         </figure>
@@ -91,12 +142,18 @@ VANTA.TRUNK({
         <figure>
           <video class="portfolio-video" controls muted loop preload="metadata" poster="/assets/work4-poster.jpg">
             <source src="/assets/work4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
             <track kind="captions" src="/assets/work4-captions.vtt" srclang="en" label="English">
             <p>Your browser doesn't support HTML5 video. <a href="/assets/work4.mp4">Download the video</a> instead.</p>
           </video>
+          <div class="portfolio-overlay">
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 4</h3>
             <p>Advertising visual concept and product modeling</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <video autoplay muted loop class="portfolio-video">
           </figcaption>
         </figure>
       </article>
@@ -105,12 +162,18 @@ VANTA.TRUNK({
         <figure>
           <video class="portfolio-video" controls muted loop preload="metadata" poster="/assets/work5-poster.jpg">
             <source src="/assets/work5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
             <track kind="captions" src="/assets/work5-captions.vtt" srclang="en" label="English">
             <p>Your browser doesn't support HTML5 video. <a href="/assets/work5.mp4">Download the video</a> instead.</p>
           </video>
+          <div class="portfolio-overlay">
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 5</h3>
             <p>Sound reacting visuals</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <video autoplay muted loop class="portfolio-video">
           </figcaption>
         </figure>
       </article>
@@ -119,12 +182,18 @@ VANTA.TRUNK({
         <figure>
           <video class="portfolio-video" controls muted loop preload="metadata" poster="/assets/work6-poster.jpg">
             <source src="/assets/work6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
             <track kind="captions" src="/assets/work6-captions.vtt" srclang="en" label="English">
             <p>Your browser doesn't support HTML5 video. <a href="/assets/work6.mp4">Download the video</a> instead.</p>
           </video>
+          <div class="portfolio-overlay">
           <figcaption class="portfolio-caption">
             <h3 class="portfolio-title">Work 6</h3>
             <p>AI experimentation with real footage</p>
+          </div>
+        </div>
+      </div>
+    </section>
           </figcaption>
         </figure>
       </article>
@@ -132,14 +201,32 @@ VANTA.TRUNK({
   </div>
 </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contact</h2>
 <!-- Contact Section -->
 <section id="contact" class="contact-section" aria-labelledby="contact-heading">
   <div class="container">
     <h2 id="contact-heading" class="section-title">Contact</h2>
     <div class="contact-content">
       <p>
+        Want to collaborate, commission work, or just say hi?
+        Feel free to reach out — I’m always open to new ideas, partnerships, creative conversations and coffee.
+          I crave coffee. 
+          Coffee is good.
+      </p> 
+      
+      <p> You can contact me via email or through my social media links below.
         Want to collaborate, commission work, or just say hi? Feel free to reach out — I'm always open to new ideas, partnerships, creative conversations, and coffee.
       </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#" class="https://www.instagram.com/_filippogirivetto_/">Instagram</a>
+      <a href="#" class="https://it.linkedin.com/in/filippo-girivetto-56b324243?trk=public_post_feed-actor-namek">LinkedIn</a>
       <p>
         You can contact me via email or through my social media links below.
       </p>
@@ -153,5 +240,9 @@ VANTA.TRUNK({
         </div>
       </div>
     </div>
+    <p>&copy; 2023 Filippo Girivetto. Moving in 3D - All rights reserved.</p>
+  </footer>
+</body>
+</html>
   </div>
 </section>
