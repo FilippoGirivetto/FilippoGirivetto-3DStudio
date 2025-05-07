@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filippo Girivetto 3D | One Page Portfolio</title>
   <link rel="stylesheet" href="assets/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="three.r134.min.js"></script>
-  <script src="vanta.birds.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -73,6 +73,30 @@
       align-items: center;
     }
 
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .portfolio-grid img,
+    .portfolio-grid video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio-grid img:hover,
+    .portfolio-grid video:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -101,9 +125,9 @@
     <header>
       <h1>Filippo Girivetto 3D</h1>
       <nav>
-        <a href="#about"><i class="fas fa-user"></i></a>
-        <a href="#portfolio"><i class="fas fa-briefcase"></i></a>
-        <a href="#contact"><i class="fas fa-envelope"></i></a>
+        <a href="#about" title="About"><i class="fas fa-user"></i></a>
+        <a href="#portfolio" title="Portfolio"><i class="fas fa-briefcase"></i></a>
+        <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
       </nav>
     </header>
 
