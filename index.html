@@ -2,11 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Filippo Girivetto 3D | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filippo Girivetto 3D | One Page Portfolio</title>
   <link rel="stylesheet" href="assets/style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="p5.min.js"></script>
+  <script src="vanta.trunk.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #vanta-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      color: white;
+    }
+
+    #about, #portfolio, #contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .section {
+        padding: 80px 10px;
+      }
+
+      header h1 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="vanta-bg"></div>
+  <div class="content-wrapper">
+    <header>
+      <h1>Filippo Girivetto 3D</h1>
+      <nav>
+        <a href="#about"><i class="fas fa-user"></i></a>
+        <a href="#portfolio"><i class="fas fa-briefcase"></i></a>
+        <a href="#contact"><i class="fas fa-envelope"></i></a>
+      </nav>
+    </header>
+
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>I’m a self-taught 3D artist passionate about visual storytelling through sketching, photography, and cinema. I've collaborated with design and architecture studios on event pre-visualizations, motion graphics, and video editing.</p>
+    </section>
+
+    <section id="portfolio" class="section">
+      <h2>Portfolio</h2>
+      <p>Selected works including both images and videos. Videos autoplay and loop for a seamless preview.</p>
+      <div class="portfolio-grid">
+        <img src="assets/work1.jpg" alt="Work 1" />
+        <img src="assets/work2.jpg" alt="Work 2" />
+        <img src="assets/work3.jpg" alt="Work 3" />
+        <video src="assets/work4.mp4" autoplay loop muted></video>
+        <video src="assets/work5.mp4" autoplay loop muted></video>
+        <video src="assets/work6.mp4" autoplay loop muted></video>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: filippo@example.com</p>
+    </section>
+
+    <footer>
+      &copy; 2025 Filippo Girivetto
+    </footer>
+  </div>
+
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       VANTA.TRUNK({
@@ -23,52 +151,5 @@
       });
     });
   </script>
-</head>
-<body>
-  <div id="vanta-bg">
-    <header class="header">
-      <div class="logo">Filippo Girivetto 3D</div>
-      <nav class="navbar">
-        <a href="#about" title="About"><img src="assets/icons/user.svg" alt="About"></a>
-        <a href="#portfolio" title="Portfolio"><img src="assets/icons/grid.svg" alt="Portfolio"></a>
-        <a href="#contact" title="Contact"><img src="assets/icons/mail.svg" alt="Contact"></a>
-      </nav>
-    </header>
-
-    <main>
-      <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>I'm a self-taught 3D artist blending traditional storytelling with tech. I create static renders, motion graphics, and AI visuals. Passionate about sketching, photography, and cinema, I’ve collaborated with design studios to bring ideas to life with pre-visualizations and video editing. I love coffee.</p>
-      </section>
-
-      <section id="portfolio" class="section">
-        <h2>Portfolio</h2>
-        <p>Explore my visual work including 3D renders, motion, and AI videos. Every project is a mix of vision and technique.</p>
-        <div class="gallery">
-          <img src="assets/work1.jpg" alt="Work 1"/>
-          <img src="assets/work2.jpg" alt="Work 2"/>
-          <img src="assets/work3.jpg" alt="Work 3"/>
-          <video autoplay muted loop src="assets/work4.mp4"></video>
-          <video autoplay muted loop src="assets/work5.mp4"></video>
-          <video autoplay muted loop src="assets/work6.mp4"></video>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Let’s connect! I'm open to collaborations and creative conversations.</p>
-        <a href="mailto:contact@example.com">contact@example.com</a>
-        <div class="socials">
-          <a href="https://www.instagram.com/_filippogirivetto_/" target="_blank">Instagram</a>
-          <a href="https://it.linkedin.com/in/filippo-girivetto-56b324243" target="_blank">LinkedIn</a>
-          <a href="#" target="_blank">ArtStation</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Filippo Girivetto. All rights reserved.</p>
-    </footer>
-  </div>
 </body>
 </html>
