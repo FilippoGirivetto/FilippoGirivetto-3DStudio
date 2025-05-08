@@ -120,6 +120,54 @@ nav a:hover {
   box-shadow: 0 10px 30px rgba(0, 255, 238, 0.3);
 }
 
+.contact-section.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-section a {
+  color: #66c7c5; /* Light peacock blue */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-section a:hover {
+  color: #4aa9a7;
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+.contact-section i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-section a:hover i {
+  transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 footer {
   text-align: center;
   padding: 2rem;
