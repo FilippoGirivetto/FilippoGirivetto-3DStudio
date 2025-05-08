@@ -88,36 +88,33 @@ nav a:hover {
 }
 
 .portfolio-wrapper {
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-top: 2rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+.swiper-slide img,
+.swiper-slide video {
   width: 100%;
-}
-
-.portfolio-grid img,
-.portfolio-grid video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.portfolio-grid img:hover,
-.portfolio-grid video:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 255, 238, 0.3);
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00ffee;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #00ffee;
 }
 
 .contact-section.glass {
