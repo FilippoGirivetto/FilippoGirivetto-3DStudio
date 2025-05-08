@@ -100,7 +100,7 @@ nav a:hover {
 
 /* Ensure the swiper container takes full width and fits its parent */
 .swiper-container {
-  width: 70%;
+  width: 100%;
   max-width: 90vw;
   height: 90vh; /* or adjust as needed */
   overflow: hidden;
