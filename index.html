@@ -4,16 +4,394 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filippo Girivetto 3D | CGI stuff</title>
-  <!-- Swiper CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
-  <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      width: 100%;
+      scroll-behavior: smooth;
+      color: #fff;
+      background: transparent;
+    }
+
+    #vanta-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.2);
+      color: #00ffee;
+    }
+
+    .section {
+      padding: 120px 20px 100px;
+      min-height: 100vh;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Enhanced glass effect for text sections */
+    .text-container {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffee, #1A8FE3, #DB4C40);
+      opacity: 0.6;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      color: #00ffee;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      color: #e0e0e0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Portfolio Grid Styles */
+    .portfolio-section {
+      padding: 120px 20px 100px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .portfolio-intro {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      margin-bottom: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffee, #1A8FE3, #DB4C40);
+      opacity: 0.6;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      cursor: pointer;
+      aspect-ratio: 16/10;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 255, 238, 0.15);
+      border-color: rgba(0, 255, 238, 0.3);
+    }
+
+    .portfolio-item img,
+    .portfolio-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-item:hover img,
+    .portfolio-item:hover video {
+      transform: scale(1.05);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 238, 0.1), rgba(26, 143, 227, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-overlay i {
+      font-size: 3rem;
+      color: #00ffee;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 238, 0.5));
+    }
+
+    /* Modal for full-size viewing */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .modal-content img,
+    .modal-content video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #00ffee;
+    }
+
+    .contact-section {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffee, #1A8FE3, #DB4C40);
+      opacity: 0.6;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .contact-section p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .contact-section a {
+      color: #00ffee;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-section a:hover {
+      color: #4aa9a7;
+      text-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      nav {
+        margin-top: 0.5rem;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 80px 16px 60px;
+      }
+
+      .text-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      .section h3 {
+        font-size: 1.2rem;
+      }
+
+      .section p {
+        font-size: 1rem;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .portfolio-item {
+        min-height: 250px;
+      }
+
+      .contact-section h2 {
+        font-size: 2rem;
+      }
+
+      .contact-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="vanta-bg"></div>
@@ -28,49 +406,82 @@
     </header>
 
     <section id="about" class="section">
-      <h2>About Me</h2>
-      <h3>I’m a 3D artist with a deep passion for visual storytelling, shaped by years of exploring all kinds of visual arts. I mainly work as a 3D Generalist in event pre-visualizations, motion graphics, product renders and 3D illustrations.</h3>
+      <div class="text-container">
+        <h2>About Me</h2>
+        <h3>I'm a 3D artist with a deep passion for visual storytelling, shaped by years of exploring all kinds of visual arts. I mainly work as a 3D Generalist in event pre-visualizations, motion graphics, product renders and 3D illustrations.</h3>
         <p>I'm constantly inspired by the rapid evolution of technology. This curiosity drives me to explore innovative approaches—especially through AI-generated images and videos, as well as developing new AI-based workflows.</p>
+      </div>
     </section>
 
-    <section id="portfolio" class="section">
-  <h2>Portfolio</h2>
-  <p>Welcome to my digital playground — where ideas run wild, pixels behave (mostly), and every project is a new excuse to push buttons and break the rules... creatively, of course.</p>
-  <div class="portfolio-wrapper">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="assets/work1.jpg" alt="Work 1" /></div>
-        <div class="swiper-slide"><img src="assets/work.jpg" alt="Work 2" /></div>
-        <div class="swiper-slide"><img src="assets/work3.jpg" alt="Work 3" /></div>
-        <div class="swiper-slide"><video src="assets/work4.mp4" autoplay loop muted playsinline></video></div>
-        <div class="swiper-slide"><video src="assets/work5.mp4" autoplay loop muted playsinline></video></div>
-        <div class="swiper-slide"><video src="assets/work6.mp4" autoplay loop muted playsinline></video></div>
+    <section id="portfolio" class="portfolio-section">
+      <div class="portfolio-intro">
+        <h2>Portfolio</h2>
+        <p>Welcome to my digital playground — where ideas run wild, pixels behave (mostly), and every project is a new excuse to push buttons and break the rules... creatively, of course.</p>
       </div>
-    
-    <!-- Navigation buttons and pagination go INSIDE swiper-container -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
+      
+      <div class="portfolio-grid">
+        <div class="portfolio-item" onclick="openModal('assets/work1.jpg', 'image')">
+          <img src="assets/work1.jpg" alt="Work 1" />
+          <div class="portfolio-overlay">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal('assets/work.jpg', 'image')">
+          <img src="assets/work.jpg" alt="Work 2" />
+          <div class="portfolio-overlay">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal('assets/work3.jpg', 'image')">
+          <img src="assets/work3.jpg" alt="Work 3" />
+          <div class="portfolio-overlay">
+            <i class="portfolio-overlay">
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal('assets/work4.mp4', 'video')">
+          <video src="assets/work4.mp4" autoplay loop muted playsinline></video>
+          <div class="portfolio-overlay">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal('assets/work5.mp4', 'video')">
+          <video src="assets/work5.mp4" autoplay loop muted playsinline></video>
+          <div class="portfolio-overlay">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal('assets/work6.mp4', 'video')">
+          <video src="assets/work6.mp4" autoplay loop muted playsinline></video>
+          <div class="portfolio-overlay">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</section>
-
-
-    <section class="contact-section glass">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:FilippoGirivetto3DStudio@gmail.com"><i class="fas fa-envelope"></i> FilippoGirivetto3DStudio@gmail.com</a></p>
-  <p>Instagram: <a href="https://www.instagram.com/_filippogirivetto_" target="_blank"><i class="fab fa-instagram"></i> @_filippogirivetto_</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/filippo-girivetto" target="_blank"><i class="fab fa-linkedin"></i> filippo-girivetto</a></p>
-</section>
-    
+    <section id="contact" class="section">
+      <div class="contact-section">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:FilippoGirivetto3DStudio@gmail.com"><i class="fas fa-envelope"></i> FilippoGirivetto3DStudio@gmail.com</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/_filippogirivetto_" target="_blank"><i class="fab fa-instagram"></i> @_filippogirivetto_</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/filippo-girivetto" target="_blank"><i class="fab fa-linkedin"></i> filippo-girivetto</a></p>
+      </div>
+    </section>
 
     <footer>
       &copy; 2025 Filippo Girivetto -moving in 3D- All right Reserved
     </footer>
   </div>
 
+  <!-- Modal for full-size viewing -->
+  <div id="portfolioModal" class="modal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
   <script>
+    // Initialize Vanta background
     VANTA.BIRDS({
       el: "#vanta-bg",
       mouseControls: true,
@@ -85,30 +496,48 @@
       backgroundColor: 0x0,
       colorMode: "lerp"
     });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+
+    // Modal functionality
+    function openModal(src, type) {
+      const modal = document.getElementById('portfolioModal');
+      const modalContent = document.getElementById('modalContent');
+      
+      if (type === 'image') {
+        modalContent.innerHTML = `<img src="${src}" alt="Portfolio item">`;
+      } else if (type === 'video') {
+        modalContent.innerHTML = `<video src="${src}" controls autoplay loop>`;
+      }
+      
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('portfolioModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
     });
-  });
-</script>
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
